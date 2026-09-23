@@ -49,7 +49,7 @@ export default function GreetingSection() {
 
       {/* FLOWER TOP LEFT */}
       <MotionImage
-        src="/gallery/border-cover.webp"
+        src="/gallery/border-cover.svg"
         alt="Flower"
         width={400}
         height={400}
@@ -60,7 +60,7 @@ export default function GreetingSection() {
         }}
         transition={{
           duration: 8,
-          repeat: Infinity,
+          repeat: 1,
           ease: "easeInOut",
         }}
         className="
@@ -79,7 +79,7 @@ export default function GreetingSection() {
 
       {/* FLOWER BOTTOM RIGHT */}
       <MotionImage
-        src="/gallery/down-cover.webp"
+        src="/gallery/down-cover.svg"
         alt="Flower"
         width={500}
         height={500}
@@ -90,7 +90,7 @@ export default function GreetingSection() {
         }}
         transition={{
           duration: 8,
-          repeat: Infinity,
+          repeat: 1,
           ease: "easeInOut",
         }}
         className="
@@ -105,50 +105,6 @@ export default function GreetingSection() {
     pointer-events-none
     select-none
   "
-      />
-
-      {/* ORNAMENT TOP RIGHT */}
-      <motion.div
-        animate={{
-          rotate: [0, 360],
-        }}
-        transition={{
-          duration: 3,
-          repeat: 2,
-          ease: "linear",
-        }}
-        className="
-          absolute
-          top-20
-          right-8
-          w-24
-          h-24
-          rounded-full
-          border
-          border-[#D4AF37]/15
-        "
-      />
-
-      {/* ORNAMENT BOTTOM LEFT */}
-      <motion.div
-        animate={{
-          rotate: [45, 55, 45],
-        }}
-        transition={{
-          duration: 8,
-          repeat: 2,
-          ease: "easeInOut",
-        }}
-        className="
-          absolute
-          bottom-24
-          left-10
-          w-16
-          h-16
-          border
-          border-[#D4AF37]/15
-          rotate-45
-        "
       />
 
       {/* FRAME */}
