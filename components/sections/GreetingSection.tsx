@@ -47,7 +47,7 @@ export default function GreetingSection() {
 
       {/* FLOWER TOP LEFT */}
       <motion.img
-        src="/gallery/border-cover.png"
+        src="/gallery/border-cover.webp"
         alt="Flower"
         animate={{
           y: [0, -10, 0],
@@ -73,7 +73,7 @@ export default function GreetingSection() {
 
       {/* FLOWER BOTTOM RIGHT */}
       <motion.img
-        src="/gallery/down-cover.png"
+        src="/gallery/down-cover.webp"
         alt="Flower"
         animate={{
           y: [0, 10, 0],

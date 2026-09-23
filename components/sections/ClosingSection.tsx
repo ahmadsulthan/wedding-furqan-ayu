@@ -26,7 +26,7 @@ export default function ClosingSection() {
           <div className="w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden border-2 border-[#D4AF37]/50 p-1 relative z-10 bg-[#0f0f0f]">
             <div className="w-full h-full rounded-full overflow-hidden bg-[#151515]">
               <img
-                src="gallery/union amour.png"
+                src="gallery/union amour.webp"
                 alt="Union Amour Logo"
                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 hover:scale-110"
               />

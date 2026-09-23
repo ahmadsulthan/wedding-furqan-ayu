@@ -136,7 +136,7 @@ export default function CoverSection({ onOpen }: { onOpen: () => void }) {
 
       {/* FLOWER TOP LEFT */}
       <motion.img
-        src="/gallery/border-cover.png"
+        src="/gallery/border-cover.webp"
         alt="Flower"
         initial={{
           scale: 0,
@@ -165,7 +165,7 @@ export default function CoverSection({ onOpen }: { onOpen: () => void }) {
 
       {/* FLOWER BOTTOM RIGHT */}
       <motion.img
-        src="/gallery/down-cover.png"
+        src="/gallery/down-cover.webp"
         alt="Flower"
         initial={{
           scale: 0,

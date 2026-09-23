@@ -149,7 +149,7 @@ export default function ProfileSection() {
 
       {/* Flower Top Left */}
       <motion.img
-        src="/gallery/border-cover.png"
+        src="/gallery/border-cover.webp"
         alt=""
         animate={{
           y: [0, -12, 0],

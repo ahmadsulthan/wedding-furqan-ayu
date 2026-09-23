@@ -143,7 +143,7 @@ export default function HeroSection() {
 
       {/* FLOWER TOP LEFT — dibuat lebih terlihat dan diberi jarak dari tulisan */}
       <img
-        src="/gallery/border-cover.png"
+        src="/gallery/border-cover.webp"
         alt="Flower"
         className="
     absolute
@@ -180,7 +180,7 @@ export default function HeroSection() {
 
       {/* FLOWER BOTTOM RIGHT */}
       <img
-        src="/gallery/down-cover.png"
+        src="/gallery/down-cover.webp"
         alt="Flower"
         className="
     absolute
