@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { CalendarDays } from "lucide-react";
 import { oleo } from "@/lib/fonts";
 import { useCountdown } from "@/hooks/useCountdown";
@@ -39,137 +40,53 @@ export default function HeroSection() {
 
   return (
     <section className="relative min-h-screen overflow-hidden bg-[#0f0f0f] py-14 px-5 flex items-center justify-center">
-      {/* BACKGROUND — tetap mempertahankan Luxury Gold yang sekarang */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,#2a2110_0%,#151515_40%,#0f0f0f_75%)]" />
+      {/* BACKGROUND */}
+      <div className="absolute inset-0 bg-[#0f0f0f]" />
 
-      {/* VIGNETTE HALUS — memberi depth tanpa mengubah tema background */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_34%,rgba(0,0,0,0.18)_72%,rgba(0,0,0,0.34)_100%)]" />
+      {/* WEDDING FRAME */}
+      <div className="absolute inset-4 md:inset-8 pointer-events-none z-[1]">
+        {/* Border luar */}
+        <div className="absolute inset-0 border border-[#D4AF37]/40 rounded-[40px]" />
 
-      {/* GOLD GLOW TOP */}
-      <motion.div
-        animate={{
-          scale: [1, 1.15, 1],
-          opacity: [0.08, 0.15, 0.08],
-        }}
-        transition={{
-          duration: 5,
-          repeat: 2,
-          ease: "easeInOut",
-        }}
-        className="absolute -top-56 left-1/2 -translate-x-1/2 w-[900px] h-[900px] rounded-full bg-[#D4AF37] blur-[100px]"
-      />
+        {/* Border dalam */}
+        <div className="absolute inset-4 border border-[#D4AF37]/20 rounded-[32px]" />
 
-      {/* GOLD GLOW BOTTOM */}
-      <div
-        className="
-    absolute
-    -bottom-56
-    left-1/2
-    -translate-x-1/2
-    w-[700px]
-    h-[700px]
-    rounded-full
-    bg-[#D4AF37]/10
-    blur-[80px]
-  "
-      />
-
-      {/* GOLD LIGHT SWEEP — sangat tipis */}
-      <motion.div
-        animate={{ x: ["-35%", "135%"], opacity: [0, 0.18, 0] }}
-        transition={{
-          duration: 5,
-          repeat: 2,
-          repeatDelay: 4,
-          ease: "easeInOut",
-        }}
-        className="absolute top-[-25%] bottom-[-25%] -left-1/3 w-1/3 rotate-[18deg] bg-gradient-to-r from-transparent via-[#D4AF37]/12 to-transparent blur-3xl"
-        aria-hidden="true"
-      />
-
-      {/* GRID */}
-      <div
-        className="absolute inset-0 opacity-[0.03] [background-image:linear-gradient(#D4AF37_1px,transparent_1px),linear-gradient(90deg,#D4AF37_1px,transparent_1px)] [background-size:80px_80px]"
-        aria-hidden="true"
-      />
-
-      {sparkles.map((item, index) => (
-        <span
-          key={index}
-          className="
-      absolute
-      text-[#D4AF37]
-      opacity-40
-      drop-shadow-[0_0_10px_rgba(212,175,55,0.35)]
-    "
-          style={{
-            top: item.top,
-            left: item.left,
-            fontSize: `${item.size}px`,
-          }}
-        >
-          ✦
-        </span>
-      ))}
-
-      {/* Bokeh kecil agar efek kelap-kelip terasa lebih lembut */}
-      <motion.div
-        animate={{
-          opacity: [0.02, 0.08, 0.02],
-          scale: [0.95, 1.08, 0.95],
-        }}
-        transition={{
-          duration: 5,
-          repeat: 2,
-        }}
-      />
-
-      <motion.div
-        animate={{
-          opacity: [0.02, 0.07, 0.02],
-          scale: [1, 1.12, 1],
-        }}
-        transition={{
-          duration: 5,
-          repeat: 2,
-        }}
-      />
-
-      {/* FLOWER TOP LEFT GLOW */}
-      <div
-        className="absolute top-0 left-[-75px] md:top-0 md:left-[-65px] w-[190px] h-[190px] md:w-[290px] md:h-[290px] rounded-full bg-[#D4AF37]/7 blur-[80px] z-[1]"
-        aria-hidden="true"
-      />
-
-      {/* ORNAMENT TOP RIGHT */}
-      <div
-        className="
-    absolute
-    top-20
-    right-16
-    hidden
-    md:block
-    z-[2]
-  "
-      >
-        <div className="w-28 h-28 rounded-full border border-[#D4AF37]/20">
-          <div className="w-full h-full rounded-full border border-[#D4AF37]/10 scale-75" />
+        {/* Corner Top Left */}
+        <div className="absolute top-0 left-0 w-24 h-24">
+          <div className="absolute top-0 left-0 w-full h-full border-t border-l border-[#D4AF37]" />
         </div>
-      </div>
 
-      {/* ORNAMENT BOTTOM LEFT */}
-      <div
-        className="
-    absolute
-    bottom-20
-    left-12
-    hidden
-    md:block
-    z-[2]
-  "
-      >
-        <div className="w-24 h-24 rotate-45 border border-[#D4AF37]/20">
-          <div className="absolute inset-3 border border-[#D4AF37]/10" />
+        {/* Corner Top Right */}
+        <div className="absolute top-0 right-0 w-24 h-24">
+          <div className="absolute top-0 right-0 w-full h-full border-t border-r border-[#D4AF37]" />
+        </div>
+
+        {/* Corner Bottom Left */}
+        <div className="absolute bottom-0 left-0 w-24 h-24">
+          <div className="absolute bottom-0 left-0 w-full h-full border-b border-l border-[#D4AF37]" />
+        </div>
+
+        {/* Corner Bottom Right */}
+        <div className="absolute bottom-0 right-0 w-24 h-24">
+          <div className="absolute bottom-0 right-0 w-full h-full border-b border-r border-[#D4AF37]" />
+        </div>
+
+        {/* Ornamen Tengah Atas */}
+        <div className="absolute top-4 left-1/2 -translate-x-1/2">
+          <div className="flex items-center gap-3">
+            <div className="w-20 h-px bg-[#D4AF37]/40" />
+            <span className="text-[#D4AF37] text-lg">✦</span>
+            <div className="w-20 h-px bg-[#D4AF37]/40" />
+          </div>
+        </div>
+
+        {/* Ornamen Tengah Bawah */}
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2">
+          <div className="flex items-center gap-3">
+            <div className="w-20 h-px bg-[#D4AF37]/40" />
+            <span className="text-[#D4AF37] text-lg">✦</span>
+            <div className="w-20 h-px bg-[#D4AF37]/40" />
+          </div>
         </div>
       </div>
 
@@ -385,21 +302,20 @@ export default function HeroSection() {
         <div className="flex justify-center mt-8">
           <a
             href="/calendar/furqan-ayu.ics"
+            download
             className="
-              inline-flex
-              items-center
-              gap-2
-              px-6
-              py-3
-              rounded-full
-              bg-[#D4AF37]
-              text-[#0f0f0f]
-              font-semibold
-              shadow-[0_0_25px_rgba(212,175,55,0.25)]
-              hover:scale-105
-              transition-all
-              duration-300
-            "
+    inline-flex
+    items-center
+    gap-2
+    px-6
+    py-3
+    rounded-full
+    bg-[#D4AF37]
+    text-[#0f0f0f]
+    font-semibold
+    hover:scale-105
+    transition-all
+  "
           >
             <CalendarDays className="w-5 h-5" />
             Simpan Tanggal
