@@ -4,6 +4,9 @@ import { motion } from "framer-motion";
 import { BookOpen } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 import { greatVibes, playfair } from "@/lib/fonts";
+import Image from "next/image";
+
+const MotionImage = motion(Image);
 
 export default function CoverSection({ onOpen }: { onOpen: () => void }) {
   const searchParams = useSearchParams();
@@ -135,10 +138,12 @@ export default function CoverSection({ onOpen }: { onOpen: () => void }) {
       ))}
 
       {/* FLOWER TOP LEFT */}
-      <motion.img
+      <MotionImage
         src="/gallery/border-cover.webp"
         alt="Flower"
-        loading="lazy"
+        width={500}
+        height={500}
+        priority
         initial={{
           scale: 0,
           opacity: 0,
@@ -154,21 +159,24 @@ export default function CoverSection({ onOpen }: { onOpen: () => void }) {
           repeat: 2,
         }}
         className="
-          absolute
-          -top-[80px]
-          -left-[90px]
-          w-[230px]
-          md:w-[320px]
-          pointer-events-none
-          drop-shadow-[0_0_40px_rgba(212,175,55,0.4)]
-        "
+    absolute
+    -top-[80px]
+    -left-[90px]
+    w-[230px]
+    md:w-[320px]
+    h-auto
+    pointer-events-none
+    drop-shadow-[0_0_40px_rgba(212,175,55,0.4)]
+  "
       />
 
       {/* FLOWER BOTTOM RIGHT */}
-      <motion.img
+      <MotionImage
         src="/gallery/down-cover.webp"
         alt="Flower"
-        loading="lazy"
+        width={600}
+        height={600}
+        priority
         initial={{
           scale: 0,
           opacity: 0,
@@ -184,14 +192,15 @@ export default function CoverSection({ onOpen }: { onOpen: () => void }) {
           repeat: 2,
         }}
         className="
-          absolute
-          -bottom-10
-          -right-10
-          w-[280px]
-          md:w-[380px]
-          pointer-events-none
-          drop-shadow-[0_0_40px_rgba(212,175,55,0.4)]
-        "
+    absolute
+    -bottom-10
+    -right-10
+    w-[280px]
+    md:w-[380px]
+    h-auto
+    pointer-events-none
+    drop-shadow-[0_0_40px_rgba(212,175,55,0.4)]
+  "
       />
 
       {/* CONTENT */}

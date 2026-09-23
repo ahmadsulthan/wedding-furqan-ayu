@@ -1,9 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { playfair } from "@/lib/fonts";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 
+const MotionImage = motion(Image);
 function Divider() {
   return (
     <div className="flex items-center justify-center gap-4">
@@ -46,55 +48,63 @@ export default function GreetingSection() {
       />
 
       {/* FLOWER TOP LEFT */}
-      <motion.img
+      <MotionImage
         src="/gallery/border-cover.webp"
         alt="Flower"
+        width={400}
+        height={400}
+        loading="lazy"
         animate={{
           y: [0, -10, 0],
           rotate: [0, 2, 0],
         }}
         transition={{
-          duration: 3,
-          repeat: 2,
+          duration: 8,
+          repeat: Infinity,
           ease: "easeInOut",
         }}
         className="
-          absolute
-          -top-10
-          -left-10
-          w-[140px]
-          sm:w-[180px]
-          md:w-[250px]
-          opacity-80
-          pointer-events-none
-          select-none
-        "
+    absolute
+    -top-10
+    -left-10
+    w-[140px]
+    sm:w-[180px]
+    md:w-[250px]
+    h-auto
+    opacity-80
+    pointer-events-none
+    select-none
+  "
       />
 
       {/* FLOWER BOTTOM RIGHT */}
-      <motion.img
+      <MotionImage
         src="/gallery/down-cover.webp"
         alt="Flower"
+        width={500}
+        height={500}
+        loading="lazy"
         animate={{
           y: [0, 10, 0],
           rotate: [0, -2, 0],
         }}
         transition={{
           duration: 8,
-          repeat: 2,
+          repeat: Infinity,
           ease: "easeInOut",
         }}
         className="
-          absolute
-          -bottom-12
-          -right-12
-          w-[180px]
-          sm:w-[220px]
-          md:w-[320px]
-          opacity-85
-          pointer-events-none
-          select-none
-        "
+    absolute
+    -bottom-12
+    -right-12
+    w-[180px]
+    sm:w-[220px]
+    md:w-[320px]
+    h-auto
+    opacity-85
+    pointer-events-none
+    select-none
+  "
       />
 
       {/* ORNAMENT TOP RIGHT */}

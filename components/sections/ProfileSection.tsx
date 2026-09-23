@@ -1,10 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { oleo, playfair } from "@/lib/fonts";
 import { FaInstagram } from "react-icons/fa";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 
+const MotionImage = motion(Image);
 function Divider() {
   return (
     <div className="flex items-center justify-center gap-4">
@@ -114,7 +116,6 @@ export default function ProfileSection() {
     <SectionWrapper className="relative overflow-hidden bg-[#080808] py-24">
       {/* Background */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,#2a2110_0%,#121212_45%,#080808_100%)]" />
-
       {/* Grid */}
       <div
         className="
@@ -123,7 +124,6 @@ export default function ProfileSection() {
           [background-size:90px_90px]
         "
       />
-
       {/* Center Glow */}
       <motion.div
         animate={{
@@ -132,25 +132,24 @@ export default function ProfileSection() {
         }}
         transition={{
           duration: 8,
-          repeat: Infinity,
+          repeat: 2,
         }}
         className="
           absolute
           left-1/2
           top-1/2
-          w-[700px]
-          h-[700px]
+          w-[450px]
+          h-[450px]
           -translate-x-1/2
           -translate-y-1/2
           bg-[#D4AF37]/10
           blur-[80px]
         "
       />
-
       {/* Flower Top Left */}
       <motion.img
         src="/gallery/border-cover.webp"
-        alt=""
+        alt="Flower Decoration"
         animate={{
           y: [0, -12, 0],
           rotate: [0, 3, 0],
@@ -167,20 +166,20 @@ export default function ProfileSection() {
     md:-left-0
     w-[180px]
     md:w-[260px]
+    h-auto
     opacity-80
     pointer-events-none
     z-0
   "
       />
-
       {/* Ornament Top Right Image */}
       <motion.div
         animate={{
           rotate: [0, -360],
         }}
         transition={{
-          duration: 35,
-          repeat: Infinity,
+          duration: 8,
+          repeat: 2,
           ease: "linear",
         }}
         className="
@@ -198,15 +197,14 @@ md:right-14
       >
         <div className="absolute inset-3 border border-[#D4AF37]/10" />
       </motion.div>
-
       {/* Flower Bottom Right */}
       <motion.div
         animate={{
           rotate: [0, 360],
         }}
         transition={{
-          duration: 30,
-          repeat: Infinity,
+          duration: 8,
+          repeat: 2,
           ease: "linear",
         }}
         className="
@@ -225,15 +223,14 @@ md:right-14
         <div className="absolute inset-3 rounded-full border border-[#D4AF37]/10" />
         <div className="absolute inset-6 rounded-full border border-[#D4AF37]/10" />
       </motion.div>
-
       {/* Ornament Bottom Left Image */}
       <motion.div
         animate={{
           rotate: [0, -360],
         }}
         transition={{
-          duration: 35,
-          repeat: Infinity,
+          duration: 8,
+          repeat: 2,
           ease: "linear",
         }}
         className="
@@ -251,7 +248,6 @@ md:left-14
       >
         <div className="absolute inset-3 border border-[#D4AF37]/10" />
       </motion.div>
-
       {/* Title */}
       <div className="relative z-10 text-center pt-16 md:pt-20">
         <motion.div
@@ -261,7 +257,7 @@ md:left-14
           }}
           transition={{
             duration: 5,
-            repeat: Infinity,
+            repeat: 2,
             ease: "easeInOut",
           }}
           className="
@@ -321,7 +317,6 @@ md:left-14
           </p>
         </motion.div>
       </div>
-
       {/* Couple Section */}
       <div className="relative z-10 max-w-6xl mx-auto px-6 mt-20">
         <div className="grid md:grid-cols-[1fr_auto_1fr] gap-10 items-center">

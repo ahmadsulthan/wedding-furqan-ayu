@@ -1,7 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useCallback } from "react";
 import { Heart, X, ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 
@@ -11,31 +10,25 @@ import SectionWrapper from "@/components/ui/SectionWrapper";
 
 export default function GallerySection() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [lightboxImg, setLightboxImg] = useState<string | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     setCurrentIndex((prev) => (prev + 1) % GALLERY_IMAGES.length);
-  };
+  }, []);
 
-  const prevSlide = () => {
+  const prevSlide = useCallback(() => {
     setCurrentIndex(
       (prev) => (prev - 1 + GALLERY_IMAGES.length) % GALLERY_IMAGES.length,
     );
-  };
+  }, []);
 
-  // Efek Auto Slide setiap 8 detik
   useEffect(() => {
-    // Hentikan auto slide jika lightbox sedang terbuka
-    if (lightboxImg) return;
+    if (selectedIndex !== null) return;
 
-    const slideInterval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % GALLERY_IMAGES.length);
-    }, 8000);
+    const interval = setInterval(nextSlide, 8000);
 
-    // Bersihkan interval setiap kali slide berubah (termasuk saat diklik manual)
-    // agar timer 8 detik mengulang dari awal
-    return () => clearInterval(slideInterval);
-  }, [currentIndex, lightboxImg]);
+    return () => clearInterval(interval);
+  }, [nextSlide, selectedIndex]);
 
   return (
     <SectionWrapper>
@@ -46,55 +39,46 @@ export default function GallerySection() {
       </h2>
 
       <div className="max-w-4xl mx-auto relative group">
-        {/* SLIDER CONTAINER */}
+        {/* SLIDER */}
         <div
           className="relative h-[400px] md:h-[600px] w-full rounded-xl overflow-hidden border border-[#D4AF37]/30 shadow-[0_0_30px_rgba(212,175,55,0.05)] cursor-pointer"
-          onClick={() => setLightboxImg(GALLERY_IMAGES[currentIndex])}
+          onClick={() => setSelectedIndex(currentIndex)}
         >
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentIndex}
-              initial={{ opacity: 0, scale: 1.05 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{
-                duration: 0.8,
-                ease: "easeInOut",
-              }}
-              className="absolute inset-0"
-            >
-              <Image
-                src={GALLERY_IMAGES[currentIndex]}
-                alt="Gallery Slider"
-                fill
-                className="object-cover"
-                sizes="(max-width:768px) 100vw, 1200px"
-              />
-            </motion.div>
-          </AnimatePresence>
+          <Image
+            key={currentIndex}
+            src={GALLERY_IMAGES[currentIndex]}
+            alt="Gallery Slider"
+            fill
+            priority={currentIndex === 0}
+            sizes="(max-width:768px) 100vw, 1200px"
+            className="object-cover transition-opacity duration-700"
+          />
 
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-            <Heart className="text-[#D4AF37] w-12 h-12 scale-50 group-hover:scale-100 transition-transform duration-500 delay-100" />
+            <Heart className="text-[#D4AF37] w-12 h-12 scale-50 group-hover:scale-100 transition-transform duration-500" />
           </div>
         </div>
 
-        {/* NAVIGATION ARROWS */}
+        {/* PREV */}
         <button
           onClick={(e) => {
             e.stopPropagation();
             prevSlide();
           }}
           className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-black/40 backdrop-blur-sm border border-[#D4AF37]/50 flex items-center justify-center text-[#D4AF37] opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-[#D4AF37] hover:text-[#0f0f0f]"
+          aria-label="Previous image"
         >
           <ChevronLeft className="w-6 h-6" />
         </button>
 
+        {/* NEXT */}
         <button
           onClick={(e) => {
             e.stopPropagation();
             nextSlide();
           }}
           className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-black/40 backdrop-blur-sm border border-[#D4AF37]/50 flex items-center justify-center text-[#D4AF37] opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-[#D4AF37] hover:text-[#0f0f0f]"
+          aria-label="Next image"
         >
           <ChevronRight className="w-6 h-6" />
         </button>
@@ -110,11 +94,14 @@ export default function GallerySection() {
                   ? "border-[#D4AF37] opacity-100 scale-110"
                   : "border-transparent opacity-40 hover:opacity-100"
               }`}
+              aria-label={`Image ${idx + 1}`}
             >
               <Image
                 src={img}
                 alt={`Thumbnail ${idx + 1}`}
                 fill
+                loading="lazy"
+                sizes="64px"
                 className="object-cover"
               />
             </button>
@@ -123,39 +110,33 @@ export default function GallerySection() {
       </div>
 
       {/* LIGHTBOX */}
-      <AnimatePresence>
-        {lightboxImg && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setLightboxImg(null)}
-            className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4 cursor-zoom-out"
+      {selectedIndex !== null && (
+        <div
+          onClick={() => setSelectedIndex(null)}
+          className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4"
+        >
+          <button
+            onClick={() => setSelectedIndex(null)}
+            className="absolute top-6 right-6 text-white hover:text-[#D4AF37] z-50"
+            aria-label="Close lightbox"
           >
-            <button
-              onClick={() => setLightboxImg(null)}
-              className="absolute top-6 right-6 text-white hover:text-[#D4AF37] z-50"
-            >
-              <X className="w-8 h-8" />
-            </button>
+            <X className="w-8 h-8" />
+          </button>
 
-            <motion.div
-              initial={{ scale: 0.9 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0.9 }}
-              onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-5xl h-[90vh]"
-            >
-              <Image
-                src={lightboxImg}
-                alt="Gallery Preview"
-                fill
-                className="object-contain rounded-md"
-              />
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="relative w-full max-w-5xl h-[90vh]"
+          >
+            <Image
+              src={GALLERY_IMAGES[selectedIndex]}
+              alt="Gallery Preview"
+              fill
+              sizes="100vw"
+              className="object-contain rounded-md"
+            />
+          </div>
+        </div>
+      )}
     </SectionWrapper>
   );
 }
