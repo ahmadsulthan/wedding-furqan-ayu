@@ -146,32 +146,7 @@ export default function ProfileSection() {
           blur-[80px]
         "
       />
-      {/* Flower Top Left */}
-      <motion.img
-        src="/gallery/border-cover.webp"
-        alt="Flower Decoration"
-        animate={{
-          y: [0, -12, 0],
-          rotate: [0, 3, 0],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="
-    absolute
-    -top-8
-    -left-8
-    md:-left-0
-    w-[180px]
-    md:w-[260px]
-    h-auto
-    opacity-80
-    pointer-events-none
-    z-0
-  "
-      />
+
       {/* Ornament Top Right Image */}
       <motion.div
         animate={{
@@ -197,32 +172,7 @@ md:right-14
       >
         <div className="absolute inset-3 border border-[#D4AF37]/10" />
       </motion.div>
-      {/* Flower Bottom Right */}
-      <motion.div
-        animate={{
-          rotate: [0, 360],
-        }}
-        transition={{
-          duration: 8,
-          repeat: 2,
-          ease: "linear",
-        }}
-        className="
-    absolute
-    top-20
-    right-8
-    md:right-14
-    w-28
-    h-28
-    rounded-full
-    border
-    border-[#D4AF37]/15
-    pointer-events-none
-  "
-      >
-        <div className="absolute inset-3 rounded-full border border-[#D4AF37]/10" />
-        <div className="absolute inset-6 rounded-full border border-[#D4AF37]/10" />
-      </motion.div>
+
       {/* Ornament Bottom Left Image */}
       <motion.div
         animate={{
@@ -275,7 +225,6 @@ md:left-14
   "
         />
 
-        {/* Greeting */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -283,6 +232,38 @@ md:left-14
           transition={{ duration: 0.8 }}
           className="max-w-2xl mx-auto px-6 mt-20 md:mt-16"
         >
+          {/* Royal Floral Crown */}
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="flex justify-center mb-12"
+          >
+            <div className="relative">
+              <div className="absolute inset-0 bg-[#D4AF37]/20 blur-2xl scale-110" />
+
+              <Image
+                src="/gallery/floral-crown.svg"
+                alt="Wedding Ornament"
+                width={700}
+                height={250}
+                className="
+          relative
+          w-[220px]
+          sm:w-[280px]
+          md:w-[360px]
+          lg:w-[440px]
+          h-auto
+          opacity-95
+          pointer-events-none
+          select-none
+        "
+                priority
+              />
+            </div>
+          </motion.div>
+
           <h3
             className={`
       ${playfair.className}

@@ -139,7 +139,7 @@ export default function CoverSection({ onOpen }: { onOpen: () => void }) {
 
       {/* FLOWER TOP LEFT */}
       <MotionImage
-        src="/gallery/border-cover.webp"
+        src="/gallery/border-cover.svg"
         alt="Flower"
         width={500}
         height={500}
@@ -172,7 +172,7 @@ export default function CoverSection({ onOpen }: { onOpen: () => void }) {
 
       {/* FLOWER BOTTOM RIGHT */}
       <MotionImage
-        src="/gallery/down-cover.webp"
+        src="/gallery/down-cover.svg"
         alt="Flower"
         width={600}
         height={600}

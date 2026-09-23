@@ -141,27 +141,6 @@ export default function HeroSection() {
         aria-hidden="true"
       />
 
-      {/* FLOWER TOP LEFT — dibuat lebih terlihat dan diberi jarak dari tulisan */}
-      <img
-        src="/gallery/border-cover.webp"
-        alt="Flower"
-        className="
-    absolute
-    top-0
-    left-[-72px]
-    sm:left-[-78px]
-    md:top-[-8px]
-    md:left-[-66px]
-    w-[205px]
-    sm:w-[225px]
-    md:w-[290px]
-    opacity-100
-    pointer-events-none
-    z-[2]
-    drop-shadow-[0_14px_32px_rgba(212,175,55,0.16)]
-  "
-      />
-
       {/* ORNAMENT TOP RIGHT */}
       <div
         className="
@@ -177,22 +156,6 @@ export default function HeroSection() {
           <div className="w-full h-full rounded-full border border-[#D4AF37]/10 scale-75" />
         </div>
       </div>
-
-      {/* FLOWER BOTTOM RIGHT */}
-      <img
-        src="/gallery/down-cover.webp"
-        alt="Flower"
-        className="
-    absolute
-    -bottom-10
-    -right-10
-    w-[220px]
-    md:w-[320px]
-    opacity-90
-    pointer-events-none
-    z-[2]
-  "
-      />
 
       {/* ORNAMENT BOTTOM LEFT */}
       <div
