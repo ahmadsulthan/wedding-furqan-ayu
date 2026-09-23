@@ -138,6 +138,7 @@ export default function CoverSection({ onOpen }: { onOpen: () => void }) {
       <motion.img
         src="/gallery/border-cover.webp"
         alt="Flower"
+        loading="lazy"
         initial={{
           scale: 0,
           opacity: 0,
@@ -167,6 +168,7 @@ export default function CoverSection({ onOpen }: { onOpen: () => void }) {
       <motion.img
         src="/gallery/down-cover.webp"
         alt="Flower"
+        loading="lazy"
         initial={{
           scale: 0,
           opacity: 0,
