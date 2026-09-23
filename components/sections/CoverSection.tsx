@@ -6,8 +6,6 @@ import { useSearchParams } from "next/navigation";
 import { greatVibes, playfair } from "@/lib/fonts";
 import Image from "next/image";
 
-const MotionImage = motion(Image);
-
 export default function CoverSection({ onOpen }: { onOpen: () => void }) {
   const searchParams = useSearchParams();
 
@@ -17,14 +15,13 @@ export default function CoverSection({ onOpen }: { onOpen: () => void }) {
     <motion.div
       initial={{ y: 0 }}
       exit={{
-        y: "-100vh",
-        opacity: 0,
+        y: "-100%",
       }}
       transition={{
-        duration: 1.2,
-        ease: [0.76, 0, 0.24, 1],
+        duration: 0.65,
+        ease: [0.22, 1, 0.36, 1],
       }}
-      className="fixed inset-0 z-50 overflow-hidden"
+      className="fixed inset-0 z-50 overflow-hidden transform-gpu"
     >
       {/* BACKGROUND */}
       <div
@@ -34,70 +31,45 @@ export default function CoverSection({ onOpen }: { onOpen: () => void }) {
         "
       />
 
-      {/* FLOWER TOP LEFT */}
-      <MotionImage
+      {/* SOFT OVERLAY */}
+      <div className="absolute inset-0 bg-black/20" />
+
+      {/* TOP LEFT ORNAMENT */}
+      <Image
         src="/gallery/border-cover.svg"
-        alt="Flower"
+        alt="Ornament"
         width={500}
         height={500}
         priority
-        initial={{
-          scale: 0,
-          opacity: 0,
-          rotate: -15,
-        }}
-        animate={{
-          scale: [1, 1.05, 1],
-          rotate: [0, 2, -2, 0],
-          opacity: [0.9, 1, 0.9],
-        }}
-        transition={{
-          duration: 5,
-          repeat: 2,
-        }}
         className="
-    absolute
-    -top-[80px]
-    -left-[90px]
-    w-[230px]
-    md:w-[320px]
-    h-auto
-    pointer-events-none
-    drop-shadow-[0_0_40px_rgba(212,175,55,0.4)]
-  "
+          absolute
+          -top-[80px]
+          -left-[90px]
+          w-[220px]
+          md:w-[300px]
+          h-auto
+          pointer-events-none
+          opacity-90
+        "
       />
 
-      {/* FLOWER BOTTOM RIGHT */}
-      <MotionImage
+      {/* BOTTOM RIGHT ORNAMENT */}
+      <Image
         src="/gallery/down-cover.svg"
-        alt="Flower"
+        alt="Ornament"
         width={600}
         height={600}
         priority
-        initial={{
-          scale: 0,
-          opacity: 0,
-          rotate: 15,
-        }}
-        animate={{
-          scale: [1, 1.05, 1],
-          rotate: [0, -2, 2, 0],
-          opacity: [0.9, 1, 0.9],
-        }}
-        transition={{
-          duration: 5,
-          repeat: 2,
-        }}
         className="
-    absolute
-    -bottom-10
-    -right-10
-    w-[280px]
-    md:w-[380px]
-    h-auto
-    pointer-events-none
-    drop-shadow-[0_0_40px_rgba(212,175,55,0.4)]
-  "
+          absolute
+          -bottom-10
+          -right-10
+          w-[260px]
+          md:w-[360px]
+          h-auto
+          pointer-events-none
+          opacity-90
+        "
       />
 
       {/* CONTENT */}
@@ -105,14 +77,14 @@ export default function CoverSection({ onOpen }: { onOpen: () => void }) {
         <motion.div
           initial={{
             opacity: 0,
-            y: 30,
+            y: 20,
           }}
           animate={{
             opacity: 1,
             y: 0,
           }}
           transition={{
-            duration: 1.4,
+            duration: 0.8,
           }}
           className="
             text-center
@@ -142,7 +114,6 @@ export default function CoverSection({ onOpen }: { onOpen: () => void }) {
               md:text-[95px]
               text-[#E6C75A]
               leading-none
-              drop-shadow-[0_0_20px_rgba(212,175,55,0.45)]
             `}
           >
             Furqan
@@ -168,7 +139,6 @@ export default function CoverSection({ onOpen }: { onOpen: () => void }) {
               md:text-[95px]
               text-[#E6C75A]
               leading-none
-              drop-shadow-[0_0_20px_rgba(212,175,55,0.45)]
             `}
           >
             Ayu
@@ -190,23 +160,22 @@ export default function CoverSection({ onOpen }: { onOpen: () => void }) {
 
           {/* DIVIDER */}
           <div className="flex items-center justify-center gap-3 my-10">
-            <div className="w-16 h-[1px] bg-[#D4AF37]" />
+            <div className="w-16 h-px bg-[#D4AF37]" />
             <div className="w-2 h-2 rotate-45 bg-[#D4AF37]" />
-            <div className="w-16 h-[1px] bg-[#D4AF37]" />
+            <div className="w-16 h-px bg-[#D4AF37]" />
           </div>
 
           {/* GUEST */}
           <motion.div
             initial={{
               opacity: 0,
-              y: 20,
             }}
             animate={{
               opacity: 1,
-              y: 0,
             }}
             transition={{
-              delay: 1,
+              delay: 0.4,
+              duration: 0.6,
             }}
             className="mb-10"
           >
@@ -232,27 +201,21 @@ export default function CoverSection({ onOpen }: { onOpen: () => void }) {
           <button
             onClick={onOpen}
             className="
-              group
-              relative
               px-10
               py-4
               rounded-full
-              bg-gradient-to-r
-              from-[#D4AF37]
-              to-[#E9C95A]
+              bg-[#D4AF37]
               text-black
               font-semibold
               text-lg
-              overflow-hidden
-              shadow-[0_0_35px_rgba(212,175,55,0.45)]
+              shadow-lg
               hover:scale-105
-              transition-all
-              duration-300
+              active:scale-95
+              transition-transform
+              duration-200
             "
           >
-            <div className="absolute inset-0 bg-white/20 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
-
-            <span className="relative flex items-center gap-3">
+            <span className="flex items-center gap-3">
               <BookOpen className="w-5 h-5" />
               Buka Undangan
             </span>
