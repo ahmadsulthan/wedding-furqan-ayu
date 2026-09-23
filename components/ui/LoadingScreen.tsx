@@ -10,12 +10,6 @@ const PARTICLES = [
   { left: "34%", top: "80%", size: 5, delay: 0.3, duration: 5.2 },
   { left: "72%", top: "18%", size: 4, delay: 1.1, duration: 4.2 },
   { left: "82%", top: "36%", size: 3, delay: 1.8, duration: 3.6 },
-  { left: "89%", top: "70%", size: 5, delay: 0.4, duration: 4.8 },
-  { left: "65%", top: "84%", size: 3, delay: 2.0, duration: 3.4 },
-  { left: "13%", top: "45%", size: 3, delay: 1.6, duration: 4.4 },
-  { left: "92%", top: "52%", size: 4, delay: 0.9, duration: 5.6 },
-  { left: "43%", top: "10%", size: 3, delay: 2.2, duration: 4.0 },
-  { left: "57%", top: "90%", size: 4, delay: 1.3, duration: 4.9 },
 ];
 
 const SPARKLES = [
@@ -56,19 +50,32 @@ export default function LoadingScreen() {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] h-[340px] md:w-[520px] md:h-[520px] rounded-full bg-[#D4AF37] blur-[80px]"
+        className="
+absolute
+left-1/2
+top-1/2
+-translate-x-1/2
+-translate-y-1/2
+w-[340px]
+h-[340px]
+md:w-[520px]
+md:h-[520px]
+rounded-full
+bg-[#D4AF37]
+blur-[50px]
+"
       />
 
       {/* SUBTLE TOP / BOTTOM LIGHT */}
       <motion.div
         animate={{ x: ["-20%", "20%", "-20%"], opacity: [0.05, 0.11, 0.05] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[240px] rounded-full bg-[#D4AF37] blur-[80px]"
+        transition={{ duration: 10, repeat: 2, ease: "easeInOut" }}
+        className="absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[240px] rounded-full bg-[#D4AF37] blur-[50px]"
       />
       <motion.div
         animate={{ x: ["15%", "-15%", "15%"], opacity: [0.035, 0.08, 0.035] }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -bottom-44 left-1/2 -translate-x-1/2 w-[760px] h-[260px] rounded-full bg-[#D4AF37] blur-[80px]"
+        transition={{ duration: 12, repeat: 2, ease: "easeInOut" }}
+        className="absolute -bottom-44 left-1/2 -translate-x-1/2 w-[760px] h-[260px] rounded-full bg-[#D4AF37] blur-[50px]"
       />
 
       {/* VERY SUBTLE GRID */}
@@ -78,7 +85,7 @@ export default function LoadingScreen() {
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
         <motion.div
           animate={{ rotate: 360 }}
-          transition={{ duration: 42, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 42, repeat: 1, ease: "linear" }}
           className="relative w-[280px] h-[280px] md:w-[430px] md:h-[430px] rounded-full border border-[#D4AF37]/20"
         >
           <div className="absolute inset-4 rounded-full border border-[#D4AF37]/10" />
@@ -93,7 +100,7 @@ export default function LoadingScreen() {
 
         <motion.div
           animate={{ rotate: -360 }}
-          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 30, repeat: 1, ease: "linear" }}
           className="absolute inset-[30px] md:inset-[46px] rounded-full border border-[#D4AF37]/10"
         >
           <span className="absolute left-1/2 -top-1 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#D4AF37]/80" />
@@ -113,7 +120,7 @@ export default function LoadingScreen() {
         animate={{ y: ["115%", "-115%"] }}
         transition={{
           duration: 6.5,
-          repeat: Infinity,
+          repeat: 1,
           ease: "easeInOut",
           repeatDelay: 2.2,
         }}
@@ -131,7 +138,7 @@ export default function LoadingScreen() {
           }}
           transition={{
             duration: particle.duration,
-            repeat: Infinity,
+            repeat: 2,
             delay: particle.delay,
             ease: "easeInOut",
           }}
@@ -156,7 +163,7 @@ export default function LoadingScreen() {
           }}
           transition={{
             duration: 3.6 + i * 0.5,
-            repeat: Infinity,
+            repeat: 2,
             delay: sparkle.delay,
             ease: "easeInOut",
           }}
@@ -195,7 +202,7 @@ export default function LoadingScreen() {
             scale: [1, 1.035, 1],
             opacity: [0.92, 1, 0.92],
           }}
-          transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut" }}
+          transition={{ duration: 3.8, repeat: 2, ease: "easeInOut" }}
           className="relative mb-5"
         >
           <div className="absolute inset-0 scale-75 rounded-full bg-[#D4AF37]/10 blur-3xl" />
@@ -239,7 +246,7 @@ export default function LoadingScreen() {
         {/* LOADING LABEL */}
         <motion.p
           animate={{ opacity: [0.35, 0.95, 0.35] }}
-          transition={{ duration: 2.3, repeat: Infinity, ease: "easeInOut" }}
+          transition={{ duration: 2.3, repeat: 2, ease: "easeInOut" }}
           className="text-[#D4AF37] tracking-[0.38em] uppercase text-[10px] md:text-xs"
         >
           Loading Invitation...
@@ -251,21 +258,21 @@ export default function LoadingScreen() {
             animate={{ x: ["-120%", "250%"] }}
             transition={{
               duration: 1.9,
-              repeat: Infinity,
+              repeat: 2,
               ease: "easeInOut",
             }}
             className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent blur-[1px]"
           />
           <motion.div
             animate={{ width: ["18%", "72%", "34%", "62%"] }}
-            transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut" }}
+            transition={{ duration: 3.8, repeat: 2, ease: "easeInOut" }}
             className="h-full rounded-full bg-[#D4AF37]/75"
           />
         </div>
 
         <motion.span
           animate={{ opacity: [0.25, 0.7, 0.25] }}
-          transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
+          transition={{ duration: 2.8, repeat: 2, ease: "easeInOut" }}
           className={`${poppins.className} mt-3 text-[8px] uppercase tracking-[0.35em] text-white/35`}
         >
           Preparing your special moment

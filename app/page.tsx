@@ -71,9 +71,7 @@ export default function WeddingInvitation() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 800);
+    const timer = setTimeout(() => setIsLoading(false), 800);
 
     return () => clearTimeout(timer);
   }, []);
