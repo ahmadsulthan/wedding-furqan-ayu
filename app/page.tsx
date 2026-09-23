@@ -10,13 +10,23 @@ import { poppins } from "@/lib/fonts";
 import LoadingScreen from "@/components/ui/LoadingScreen";
 import FloatingControls from "@/components/ui/FloatingControls";
 
-// Above The Fold (langsung terlihat)
+// Above The Fold
 import CoverSection from "@/components/sections/CoverSection";
 import HeroSection from "@/components/sections/HeroSection";
 import GreetingSection from "@/components/sections/GreetingSection";
 import ProfileSection from "@/components/sections/ProfileSection";
 
-// Below The Fold (lazy loaded)
+// Feature Toggle
+const FEATURES = {
+  loveStory: false, // CLIENT MINTA DIMATIKAN
+  gallery: true,
+  event: true,
+  gift: true,
+  rsvp: true,
+  closing: true,
+};
+
+// Lazy Sections
 const LoveStorySection = dynamic(
   () => import("@/components/sections/LoveStorySection"),
   {
@@ -72,7 +82,6 @@ export default function WeddingInvitation() {
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 800);
-
     return () => clearTimeout(timer);
   }, []);
 
@@ -127,12 +136,12 @@ export default function WeddingInvitation() {
           <GreetingSection />
           <ProfileSection />
 
-          <LoveStorySection />
-          <GallerySection />
-          <EventSection />
-          <GiftSection />
-          <RsvpSection />
-          <ClosingSection />
+          {FEATURES.loveStory && <LoveStorySection />}
+          {FEATURES.gallery && <GallerySection />}
+          {FEATURES.event && <EventSection />}
+          {FEATURES.gift && <GiftSection />}
+          {FEATURES.rsvp && <RsvpSection />}
+          {FEATURES.closing && <ClosingSection />}
         </div>
       )}
     </main>
