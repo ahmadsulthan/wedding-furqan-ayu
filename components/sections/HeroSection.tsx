@@ -38,6 +38,39 @@ const sparkles = [
 export default function HeroSection() {
   const countdown = useCountdown("2026-10-04T10:00:00+07:00");
 
+  const calendarUrl = new URL("https://calendar.google.com/calendar/render");
+
+  calendarUrl.searchParams.set("action", "TEMPLATE");
+
+  calendarUrl.searchParams.set(
+    "text",
+    "Pernikahan T.M Furqan Anshari & Ayu Agustina",
+  );
+
+  calendarUrl.searchParams.set("dates", "20261004T030000Z/20261004T080000Z");
+
+  calendarUrl.searchParams.set(
+    "details",
+    `
+Assalamu'alaikum Warahmatullahi Wabarakatuh
+
+Kami mengundang Bapak/Ibu/Saudara/i untuk hadir dalam acara pernikahan kami.
+
+Mempelai:
+T.M Furqan Anshari & Ayu Agustina
+
+Tanggal:
+Minggu, 04 Oktober 2026
+
+Terima kasih atas doa dan kehadirannya.
+`,
+  );
+
+  calendarUrl.searchParams.set(
+    "location",
+    "CHILL HOUSE https://maps.app.goo.gl/BXdmbdHvaMEoZTMR7?g_st=iw",
+  );
+
   return (
     <section className="relative min-h-screen overflow-hidden bg-[#0f0f0f] py-14 px-5 flex items-center justify-center">
       {/* BACKGROUND */}
@@ -301,24 +334,27 @@ export default function HeroSection() {
         {/* BUTTON SIMPAN TANGGAL */}
         <div className="flex justify-center mt-8">
           <a
-            href="/calendar/furqan-ayu.ics"
-            download
+            href={calendarUrl.toString()}
+            target="_blank"
+            rel="noopener noreferrer"
             className="
-    inline-flex
-    items-center
-    gap-2
-    px-6
-    py-3
-    rounded-full
-    bg-[#D4AF37]
-    text-[#0f0f0f]
-    font-semibold
-    hover:scale-105
-    transition-all
-  "
+      inline-flex
+      items-center
+      gap-2
+      px-6
+      py-3
+      rounded-full
+      bg-[#D4AF37]
+      text-[#0f0f0f]
+      font-semibold
+      hover:scale-105
+      transition-all
+      duration-300
+      shadow-[0_0_20px_rgba(212,175,55,0.25)]
+    "
           >
             <CalendarDays className="w-5 h-5" />
-            Simpan Tanggal
+            Tambah ke Kalender
           </a>
         </div>
       </motion.div>

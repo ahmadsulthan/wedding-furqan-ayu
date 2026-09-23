@@ -147,57 +147,6 @@ export default function ProfileSection() {
         "
       />
 
-      {/* Ornament Top Right Image */}
-      <motion.div
-        animate={{
-          rotate: [0, -360],
-        }}
-        transition={{
-          duration: 8,
-          repeat: 2,
-          ease: "linear",
-        }}
-        className="
-    absolute
-top-20
-right-8
-md:right-14
-    w-24
-    h-24
-    rotate-45
-    border
-    border-[#D4AF37]/15
-    pointer-events-none
-  "
-      >
-        <div className="absolute inset-3 border border-[#D4AF37]/10" />
-      </motion.div>
-
-      {/* Ornament Bottom Left Image */}
-      <motion.div
-        animate={{
-          rotate: [0, -360],
-        }}
-        transition={{
-          duration: 8,
-          repeat: 2,
-          ease: "linear",
-        }}
-        className="
-    absolute
-bottom-24
-left-8
-md:left-14
-    w-24
-    h-24
-    rotate-45
-    border
-    border-[#D4AF37]/15
-    pointer-events-none
-  "
-      >
-        <div className="absolute inset-3 border border-[#D4AF37]/10" />
-      </motion.div>
       {/* Title */}
       <div className="relative z-10 text-center pt-16 md:pt-20">
         <motion.div

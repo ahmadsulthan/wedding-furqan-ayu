@@ -74,7 +74,7 @@ export default function GiftSection() {
             >
               <div className="flex justify-between items-center mb-6">
                 <img
-                  src="/gallery/BRI Bank.webp"
+                  src="/gallery/BRI Bank.svg"
                   alt="BRI"
                   className="h-12 object-contain"
                 />
@@ -145,7 +145,7 @@ export default function GiftSection() {
             >
               <div className="flex justify-between items-center mb-6">
                 <img
-                  src="/gallery/krom bank.webp"
+                  src="/gallery/krom bank.svg"
                   alt="Krom"
                   className="h-12 object-contain"
                 />
